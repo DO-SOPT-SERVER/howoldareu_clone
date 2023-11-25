@@ -18,15 +18,13 @@ public class ResultController {
     private final ResultService resultService;
 
     @PostMapping("")
-    public ApiResponse<ResultResponseDTO> saveResult(AnswerListRequestDTO answerListRequestDTO){
+    public ApiResponse<ResultResponseDTO> saveResult(@RequestBody AnswerListRequestDTO answerListRequestDTO){
         return ApiResponse.success(Success.CREATE_RESULT_SUCCESS,resultService.saveResult(answerListRequestDTO));
     }
 
     @GetMapping("/{memberId}")
     public ApiResponse<List<AllResultsResponseDTO>> getAllResults(@PathVariable Long memberId) {
-
         return ApiResponse.success(Success.GET_USER_LIST_SUCCESS, resultService.getAllResults(memberId));
-
     }
 
 }
