@@ -43,7 +43,7 @@ public class ResultService {
         }
         AgeEnum ageEnum = getAgeEnum(memberAge);
         resultJpaRepository.save(Result.builder().member(member).resultAge(memberAge).build());
-        return ResultResponseDTO.of(request.nickname(),memberAge,ageEnum.getTitle(),ageEnum.getContent(),ageEnum.getImageUrl());
+        return ResultResponseDTO.of(request.nickname(),memberAge,ageEnum.getTitle(),ageEnum.getContent(),ageEnum.getImageUrl1(), ageEnum.getImageUrl2());
     }
 
     public List<AllResultsResponseDTO> getAllResults(Long memberId) {
@@ -54,7 +54,7 @@ public class ResultService {
         for(Result result : resultList) {
             AgeEnum ageEnum = getAgeEnum(result.getResultAge());
             String time = getStringDate(result.getTestedDate());
-            AllResultsResponseDTO dto = AllResultsResponseDTO.of(result, ageEnum.getTitle(), ageEnum.getContent(), time);
+            AllResultsResponseDTO dto = AllResultsResponseDTO.of(result, ageEnum.getTitle(), ageEnum.getContent(), time, ageEnum.getImageUrl1(), ageEnum.getImageUrl2());
             answer.add(dto);
         }
 
