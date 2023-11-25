@@ -1,15 +1,19 @@
 package com.sopt.Server.domain;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
 @Entity
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "RESULTS")
-public class Result {
+@Getter
+@Builder
+@EntityListeners(AuditingEntityListener.class)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class Result{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "result_id")
@@ -20,7 +24,14 @@ public class Result {
 
     private int resultAge;
 
+    @CreatedDate
     private LocalDateTime testedDate;
 
-
+    @Builder
+    public Result(Long id, Member member, int resultAge, LocalDateTime testedDate) {
+        this.id = id;
+        this.member = member;
+        this.resultAge = resultAge;
+        this.testedDate = testedDate;
+    }
 }

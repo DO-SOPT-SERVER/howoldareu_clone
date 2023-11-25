@@ -20,19 +20,13 @@ public class MemberService {
 
     @Transactional
     public ApiResponse<MemberGetResponse> saveMember(String nickName, int age) {
-
-        Member newMember = new Member(nickName, age);
+        Member newMember = Member.builder().name(nickName).realAge(age).build();
         Member member = memberJpaRepository.findByName(nickName).orElse(null);//null이면
-
         if(member != null)//있다면
             return ApiResponse.success(Success.GET_MEMBER_SUCCESS, MemberGetResponse.of(member));
         else {
             memberJpaRepository.save(newMember);
         }
-
         return ApiResponse.success(Success.CREATE_MEMBER_SUCCESS, MemberGetResponse.of(newMember));
-
-
-
     }
 }
