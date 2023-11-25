@@ -7,6 +7,7 @@ import com.sopt.Server.exception.Success;
 import com.sopt.Server.service.ResultService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +18,7 @@ public class ResultsController {
     private final ResultService resultService;
 
     @PostMapping("")
-    public ApiResponse<ResultResponseDTO> saveResult(AnswerListRequestDTO answerListRequestDTO){
+    public ApiResponse<ResultResponseDTO> saveResult(@RequestBody AnswerListRequestDTO answerListRequestDTO){
         return ApiResponse.success(Success.CREATE_RESULT_SUCCESS,resultService.saveResult(answerListRequestDTO));
     }
 }
