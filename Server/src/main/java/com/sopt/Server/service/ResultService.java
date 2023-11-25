@@ -63,7 +63,7 @@ public class ResultService {
     }
 
     private String getStringDate(LocalDateTime time) {
-        String answer = time.getMonth() + "월 " + time.getDayOfMonth() + "일";
+        String answer = time.getMonthValue() + "월 " + time.getDayOfMonth() + "일";
         return answer;
     }
 
