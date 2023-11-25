@@ -11,14 +11,13 @@ import lombok.NoArgsConstructor;
 public class Answer {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "answer_id")
-    private Long id;
+    private Long answerId;
 
     @ManyToOne
     private Question question;
 
-    private boolean answer_type;
+    private boolean answerType;
 
-    private int answer_score;
+    private int answerScore;
 
 }
