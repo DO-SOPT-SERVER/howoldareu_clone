@@ -16,14 +16,16 @@ public class MemberService {
 
     private final MemberJpaRepository memberJpaRepository;
 
+    @Transactional
     public ApiResponse<MemberGetResponse> saveMember(String nickName, int age) {
 
         Member member = memberJpaRepository.findByName(nickName);
+        Member newMember = new Member(nickName, age);
         if(member != null)//있다면
             return ApiResponse.success(Success.GET_MEMBER_SUCCESS, MemberGetResponse.of(member));
-        //없다면
-        Member newMember = new Member(nickName, age);
-        memberJpaRepository.save(newMember);
+        else {
+            memberJpaRepository.save(newMember);
+        }
 
         return ApiResponse.success(Success.CREATE_MEMBER_SUCCESS, MemberGetResponse.of(newMember));
 
