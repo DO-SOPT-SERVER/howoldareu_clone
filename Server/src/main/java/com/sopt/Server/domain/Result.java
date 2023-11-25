@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Table(name = "RESULTS")
 public class Result {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "result_id")
     private Long id;
 
