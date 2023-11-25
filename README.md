@@ -75,6 +75,7 @@ java -jar Server-0.0.1-SNAPSHOT.jar
 <br/><br/>
 
 ### Architecture Structure
+- 추가 예정
 
 
 <br><br>
@@ -126,7 +127,7 @@ ex) feat/#9
 <br/><br/>
 
 ### ✔️ Code Convention
---
+---
 1. 변수는 CamelCase를 기본으로 한다. <br>
 2. URL, 파일명 등은 kebab-case를 사용한다. <br>
 3. 패키지명은 단어가 달라지더라도 무조건 소문자를 사용한다. <br>
