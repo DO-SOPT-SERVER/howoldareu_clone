@@ -75,7 +75,8 @@ java -jar Server-0.0.1-SNAPSHOT.jar
 <br/><br/>
 
 ### Architecture Structure
-- 추가 예정
+![서버 아키텍처](https://github.com/DO-SOPT-SOPKATHON-iOS4/SOPKATHON-Server/assets/81363864/565c3d80-0779-47a7-8b7b-ef37224349b4)
+
 
 
 <br><br>
