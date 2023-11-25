@@ -1,5 +1,7 @@
 package com.sopt.Server.common;
 
+import com.sopt.Server.exception.Success;
+import com.sopt.Server.exception.Error;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
