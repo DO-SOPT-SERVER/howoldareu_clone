@@ -18,7 +18,7 @@ public class MemberService {
 
     public ApiResponse<MemberGetResponse> saveMember(String nickName, int age) {
 
-        Member member = memberJpaRepository.findByName(nickName);
+        Member member = memberJpaRepository.findByName(nickName).orElseThrow();
         if(member != null)//있다면
             return ApiResponse.success(Success.GET_MEMBER_SUCCESS, MemberGetResponse.of(member));
         //없다면

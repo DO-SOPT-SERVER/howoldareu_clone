@@ -2,6 +2,7 @@ package com.sopt.Server.domain;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "RESULTS")
+@Getter
 public class Result {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

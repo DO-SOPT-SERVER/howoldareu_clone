@@ -11,6 +11,9 @@ public enum Error {
     REQUEST_VALIDATION_EXCEPTION(HttpStatus.BAD_REQUEST, "잘못된 요청입니다"),
 
     // 404 NOT FOUND
+    NOT_FOUND_MEMBER_EXCEPTION(HttpStatus.NOT_FOUND, "해당 회원을 찾을 수 없습니다"),
+    NOT_FOUND_QUESTION_EXCEPTION(HttpStatus.NOT_FOUND, "해당 질문을 찾을 수 없습니다"),
+    NOT_FOUND_ANSWER_EXCEPTION(HttpStatus.NOT_FOUND, "해당 답변을 찾을 수 없습니다"),
 
     // 500 INTERNAL SERVER ERROR
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "알 수 없는 서버 에러가 발생했습니다");
