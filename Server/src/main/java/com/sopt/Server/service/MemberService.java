@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -16,18 +18,15 @@ public class MemberService {
 
     private final MemberJpaRepository memberJpaRepository;
 
+    @Transactional
     public ApiResponse<MemberGetResponse> saveMember(String nickName, int age) {
-
-        Member member = memberJpaRepository.findByName(nickName).orElseThrow();
+        Member newMember = Member.builder().name(nickName).realAge(age).build();
+        Member member = memberJpaRepository.findByName(nickName).orElse(null);//null이면
         if(member != null)//있다면
             return ApiResponse.success(Success.GET_MEMBER_SUCCESS, MemberGetResponse.of(member));
-        //없다면
-        Member newMember = new Member(nickName, age);
-        memberJpaRepository.save(newMember);
-
+        else {
+            memberJpaRepository.save(newMember);
+        }
         return ApiResponse.success(Success.CREATE_MEMBER_SUCCESS, MemberGetResponse.of(newMember));
-
-
-
     }
 }
