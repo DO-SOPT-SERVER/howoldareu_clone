@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "RESULTS")
 public class Result {
 
     @Id @GeneratedValue

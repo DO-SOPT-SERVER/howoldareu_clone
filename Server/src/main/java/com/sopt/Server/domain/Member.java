@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "MEMBERS")
 public class Member {
 
     @Id @GeneratedValue

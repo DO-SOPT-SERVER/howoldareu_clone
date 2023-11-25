@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "ANSWERS")
 public class Answer {
 
     @Id @GeneratedValue
