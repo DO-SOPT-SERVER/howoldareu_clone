@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "ANSWERS")
 @Getter
 public class Answer {
 

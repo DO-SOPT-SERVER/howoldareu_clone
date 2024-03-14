@@ -8,7 +8,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "RESULTS")
 @Getter
 @Builder
 @EntityListeners(AuditingEntityListener.class)
