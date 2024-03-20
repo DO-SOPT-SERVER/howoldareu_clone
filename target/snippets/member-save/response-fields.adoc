@@ -1,0 +1,24 @@
+|===
+|Path|Type|Description
+
+|`+code+`
+|`+Number+`
+|응답 코드
+
+|`+message+`
+|`+String+`
+|응답 메시지
+
+|`+data.memberId+`
+|`+Number+`
+|회원 식별자
+
+|`+data.nickName+`
+|`+String+`
+|회원 닉네임
+
+|`+data.realAge+`
+|`+Number+`
+|회원 나이
+
+|===

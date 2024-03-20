@@ -17,7 +17,7 @@ import java.util.List;
 public class ResultController {
     private final ResultService resultService;
 
-    @PostMapping("")
+    @PostMapping
     public ApiResponse<ResultResponse> saveResult(@RequestBody AnswerListRequest answerListRequest){
         return ApiResponse.success(Success.CREATE_RESULT_SUCCESS,resultService.saveResult(answerListRequest));
     }

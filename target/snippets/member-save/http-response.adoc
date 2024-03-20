@@ -1,0 +1,8 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 127
+
+{"code":201,"message":"멤버 생성에 성공했습니다","data":{"memberId":1,"nickName":"테스트닉네임","realAge":20}}
+----

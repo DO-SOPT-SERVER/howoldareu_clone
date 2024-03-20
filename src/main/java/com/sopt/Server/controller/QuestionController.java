@@ -17,9 +17,10 @@ import java.util.List;
 public class QuestionController {
     private final QuestionService questionService;
 
-    @GetMapping("")
-    public ApiResponse<List<GetQuestionResponse>> getQuestionResponseDTOList() {
-        return ApiResponse.success(Success.GET_QUESTION_LIST_SUCCESS,questionService.getQuestionResponseDTOList());
+    @GetMapping
+    public ApiResponse<List<GetQuestionResponse>> getQuestions() {
+        final List<GetQuestionResponse> questionResponseDTOList = questionService.getQuestionResponseDTOList();
+        return ApiResponse.success(Success.GET_QUESTION_LIST_SUCCESS, questionResponseDTOList);
     }
 
 }

@@ -1,10 +1,12 @@
 package com.sopt.Server.service;
 
 import com.sopt.Server.common.ApiResponse;
+import com.sopt.Server.controller.request.MemberPostRequest;
 import com.sopt.Server.controller.response.MemberGetResponse;
 import com.sopt.Server.domain.Member;
 import com.sopt.Server.exception.Success;
 import com.sopt.Server.repository.MemberJpaRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,16 +19,20 @@ import java.util.Optional;
 public class MemberService {
 
     private final MemberJpaRepository memberJpaRepository;
+    private final MemberSaver memberSaver;
 
     @Transactional
-    public ApiResponse<MemberGetResponse> saveMember(String nickName, int age) {
-        Member newMember = Member.builder().name(nickName).realAge(age).build();
-        Member member = memberJpaRepository.findByName(nickName).orElse(null);//null이면
-        if(member != null)//있다면
-            return ApiResponse.success(Success.GET_MEMBER_SUCCESS, MemberGetResponse.of(member));
-        else {
-            memberJpaRepository.save(newMember);
+    public MemberGetResponse saveMember(MemberPostRequest request) {
+        try {
+            Member member = memberJpaRepository.findByNameOrThrow(request.nickName());
+            return MemberGetResponse.of(member);
+        } catch (EntityNotFoundException e) {
+            Member newMember = Member.builder()
+                    .name(request.nickName())
+                    .realAge(request.age())
+                    .build();
+            memberSaver.save(newMember);
+            return MemberGetResponse.of(newMember);
         }
-        return ApiResponse.success(Success.CREATE_MEMBER_SUCCESS, MemberGetResponse.of(newMember));
     }
 }

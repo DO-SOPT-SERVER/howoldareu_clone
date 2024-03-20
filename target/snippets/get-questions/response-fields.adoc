@@ -1,0 +1,20 @@
+|===
+|Path|Type|Description
+
+|`+code+`
+|`+Number+`
+|응답 코드
+
+|`+message+`
+|`+String+`
+|응답 메시지
+
+|`+data[].questionId+`
+|`+Number+`
+|질문 식별자
+
+|`+data[].questionContent+`
+|`+String+`
+|질문 내용
+
+|===

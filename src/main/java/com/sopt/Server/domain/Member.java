@@ -15,13 +15,12 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-
     private String name;
 
     private int realAge;
 
     @Builder
-    public Member(String name, int realAge) {
+    private Member(String name, int realAge) {
         this.name = name;
         this.realAge = realAge;
     }
