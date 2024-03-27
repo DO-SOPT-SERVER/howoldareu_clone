@@ -55,7 +55,6 @@ asciidoctor {
 	inputs.dir snippetsDir
 	configurations 'asciidoctorExt'
 	dependsOn test
-
 	baseDirFollowsSourceFile()
 }
 
@@ -79,5 +78,6 @@ build {
 
 
 tasks.named('test') {
+	outputs.dir snippetsDir
 	useJUnitPlatform()
 }

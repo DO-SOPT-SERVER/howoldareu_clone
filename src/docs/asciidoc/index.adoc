@@ -1,5 +1,6 @@
+
 ifndef::snippets[]
-:snippets: ../../build/generated-snippets
+:snippets: ../../../build/generated-snippets
 endif::[]
 
 = HOWOLDAREYOU REST API 문서
@@ -7,23 +8,70 @@ endif::[]
 :icons: font
 :source-highlighter: highlightjs
 :toc: left
-:toclevels: 2
-:seclinks:
+:toclevels:
 
-[[Member-API]]
-== Member API
-include::api/member.adoc[]
+[[MemberAPI]]
+= Member API
+
+== Save Member
+==== HTTP Request
+include::{snippets}/save-member/http-request.adoc[]
+
+==== Request Example
+include::{snippets}/save-member/curl-request.adoc[]
+
+==== HTTP Response
+include::{snippets}/save-member/http-response.adoc[]
+include::{snippets}/save-member/response-fields.adoc[]
+
 
 [[Question-API]]
-== Question API
-include::api/question.adoc[]
+= Question API
+
+== Get Questions
+
+==== HTTP Request
+include::{snippets}/get-questions/http-request.adoc[]
+
+==== Request Example
+include::{snippets}/get-questions/curl-request.adoc[]
+
+==== HTTP Response
+include::{snippets}/get-questions/http-response.adoc[]
+include::{snippets}/get-questions/response-fields.adoc[]
+
 
 [[Result-API]]
-== Result API
-include::api/result.adoc[]
+= Result API
 
-[[HealthCheck-API]]
-== Health Check API
-include::api/health-check.adoc[]
+== Get All Result
+
+==== HTTP Request
+include::{snippets}/get-all-results/http-request.adoc[]
+
+==== Request Example
+include::{snippets}/get-all-results/curl-request.adoc[]
+
+==== HTTP Response
+include::{snippets}/get-all-results/http-response.adoc[]
+include::{snippets}/get-all-results/response-fields.adoc[]
+
+
+== Save Result
+
+==== HTTP Request
+include::{snippets}/save-result/http-request.adoc[]
+
+==== Request Example
+include::{snippets}/save-result/curl-request.adoc[]
+
+==== HTTP Response
+include::{snippets}/save-result/http-response.adoc[]
+include::{snippets}/save-result/response-fields.adoc[]
+
+
+// [[HealthCheck-API]]
+// == Health Check API
+// include::{docdir}/health-check.adoc[]
 
 
