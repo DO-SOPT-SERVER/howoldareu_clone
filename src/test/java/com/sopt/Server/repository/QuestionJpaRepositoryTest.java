@@ -18,6 +18,7 @@ public class QuestionJpaRepositoryTest {
     @Autowired
     QuestionJpaRepository questionJpaRepository;
 
+
     @Test
     @DisplayName("질문 목록을 조회할 수 있다.")
     void findAll() {

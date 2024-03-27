@@ -15,12 +15,13 @@ import java.util.List;
 @RequestMapping("/question")
 @RequiredArgsConstructor
 public class QuestionController {
+
     private final QuestionService questionService;
 
     @GetMapping
     public ApiResponse<List<GetQuestionResponse>> getQuestions() {
-        final List<GetQuestionResponse> questionResponseDTOList = questionService.getQuestionResponseDTOList();
-        return ApiResponse.success(Success.GET_QUESTION_LIST_SUCCESS, questionResponseDTOList);
+        final List<GetQuestionResponse> questionResponseList = questionService.getQuestionResponseList();
+        return ApiResponse.success(Success.GET_QUESTION_LIST_SUCCESS, questionResponseList);
     }
 
 }

@@ -4,6 +4,9 @@
 ==== HTTP Request
 include::{snippets}/save-member/http-request.adoc[]
 
+==== Request Example
+include::{snippets}/save-member/curl-request.adoc[]
+
 ==== HTTP Response
 include::{snippets}/save-member/http-response.adoc[]
 include::{snippets}/save-member/response-fields.adoc[]

@@ -1,4 +1,0 @@
-[source,json,options="nowrap"]
-----
-{"nickName":"테스트닉네임","age":20}
-----

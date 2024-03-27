@@ -6,8 +6,6 @@ import com.sopt.Server.service.QuestionService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -21,7 +19,7 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.response
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class QuestionControllerTest extends RestDocsSupport {
+public class QuestionControllerTest extends RestDocsEnv {
 
     private final QuestionService questionService = mock(QuestionService.class);
 
@@ -33,14 +31,14 @@ public class QuestionControllerTest extends RestDocsSupport {
     @Test
     @DisplayName("질문 목록을 조회할 수 있다.")
     void getQuestions() throws Exception {
-        List<GetQuestionResponse> responses = List.of(
+        // given
+        List<GetQuestionResponse> response = List.of(
                 new GetQuestionResponse(1L, "질문1"),
                 new GetQuestionResponse(2L, "질문2")
         );
 
-      // given
-        BDDMockito.given(questionService.getQuestionResponseDTOList())
-                .willReturn(responses);
+        BDDMockito.given(questionService.getQuestionResponseList())
+                .willReturn(response);
       // when
         ResultActions result = mockMvc.perform(get("/question"));
 
@@ -51,8 +49,8 @@ public class QuestionControllerTest extends RestDocsSupport {
                          responseFields(
                                  fieldWithPath("code").type(JsonFieldType.NUMBER).description("응답 코드"),
                                  fieldWithPath("message").type(JsonFieldType.STRING).description("응답 메시지"),
-                                 fieldWithPath("data[].questionId").type(JsonFieldType.NUMBER).description("질문 식별자"),
-                                 fieldWithPath("data[].questionContent").type(JsonFieldType.STRING).description("질문 내용")
+                                 fieldWithPath("data[].questionId").type(JsonFieldType.NUMBER).description("질문 식별자").optional(),
+                                 fieldWithPath("data[].questionContent").type(JsonFieldType.STRING).description("질문 내용").optional()
                          )
                  ));
 

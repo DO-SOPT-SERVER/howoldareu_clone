@@ -18,6 +18,7 @@ public enum AgeEnum {
     private final String imageUrl1;
     private final String imageUrl2;
 
+    // TODO: Switch 문으로 리팩토링
     public static AgeEnum byAge(int age) {
         if (age < 10) {
             throw new IllegalArgumentException("나이가 10세 미만입니다.");

@@ -3,7 +3,6 @@ package com.sopt.Server.service;
 import com.sopt.Server.common.AgeEnum;
 import com.sopt.Server.controller.request.AnswerListRequest;
 import com.sopt.Server.controller.request.AnswerRequest;
-import com.sopt.Server.controller.response.AllResultsResponse;
 import com.sopt.Server.controller.response.ResultResponse;
 import com.sopt.Server.domain.Answer;
 import com.sopt.Server.domain.Member;
@@ -20,7 +19,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -48,28 +46,37 @@ public class ResultService {
                 .memberId(member.getId())
                 .resultAge(memberAge)
                 .build());
-        return ResultResponse.of(request.nickname(), memberAge, ageEnum.getTitle(), ageEnum.getContent(), ageEnum.getImageUrl1(), ageEnum.getImageUrl2());
+
+        return ResultResponse.of(
+                request.nickname(),
+                memberAge,
+                ageEnum.getTitle(),
+                ageEnum.getContent(),
+                ageEnum.getImageUrl1(),
+                ageEnum.getImageUrl2());
     }
 
-    public List<AllResultsResponse> getAllResults(Long memberId) {
+    public List<ResultResponse> getAllResults(Long memberId) {
 
-        List<Result> resultList = resultJpaRepository.findAllByMemberIdOrderByIdDesc(memberId);
-        List<AllResultsResponse> answer = new ArrayList<>();
-        //멤버의 result 모두 갖고옴 이것을 각각의 result마다 allresultsresponsedto만들어야 해
-        for (Result result : resultList) {
-            AgeEnum ageEnum = AgeEnum.byAge(result.getResultAge());
-            String time = getStringDate(result.getTestedDate());
-            AllResultsResponse dto = AllResultsResponse.of(result, ageEnum.getTitle(), ageEnum.getContent(), time, ageEnum.getImageUrl1(), ageEnum.getImageUrl2());
-            answer.add(dto);
-        }
+        List<Result> results = resultJpaRepository.findAllByMemberIdOrderByIdDesc(memberId);
+        Member member = memberJpaRepository.findById(memberId).orElseThrow(() -> new CustomException(Error.NOT_FOUND_MEMBER_EXCEPTION, Error.NOT_FOUND_MEMBER_EXCEPTION.getMessage()));
 
-        return answer;
-
+        return results.stream()
+                .map(
+                        r -> ResultResponse.of(
+                                member.getName(),
+                                r.getResultAge(),
+                                AgeEnum.byAge(r.getResultAge()).getTitle(),
+                                AgeEnum.byAge(r.getResultAge()).getContent(),
+                                AgeEnum.byAge(r.getResultAge()).getImageUrl1(),
+                                AgeEnum.byAge(r.getResultAge()).getImageUrl2()
+                        )
+                )
+                .toList();
     }
 
     private String getStringDate(LocalDateTime time) {
-        String answer = time.getMonthValue() + "월 " + time.getDayOfMonth() + "일";
-        return answer;
+        return time.getMonthValue() + "월 " + time.getDayOfMonth() + "일";
     }
 
 }

@@ -20,7 +20,6 @@ public class Result{
 
     private int resultAge;
 
-    @CreatedDate
     private LocalDateTime testedDate;
 
     @Builder

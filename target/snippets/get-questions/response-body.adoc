@@ -1,4 +1,0 @@
-[source,json,options="nowrap"]
-----
-{"code":200,"message":"질문 리스트 조회 성공","data":[{"questionId":1,"questionContent":"질문1"},{"questionId":2,"questionContent":"질문2"}]}
-----

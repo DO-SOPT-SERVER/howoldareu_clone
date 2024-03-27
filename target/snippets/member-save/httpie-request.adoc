@@ -1,6 +1,0 @@
-[source,bash]
-----
-$ echo '{"nickName":"테스트닉네임","age":20}' | http POST 'http://localhost:8080/member' \
-    'Content-Type:application/json;charset=UTF-8' \
-    'Accept:application/json'
-----
