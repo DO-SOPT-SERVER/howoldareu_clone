@@ -14,7 +14,7 @@ public enum Success {
     GET_USER_LIST_SUCCESS(HttpStatus.OK, "유저 결과 리스트 반환 성공"),
 
     // 201 created
-    CREATE_MEMBER_SUCCESS(HttpStatus.CREATED, "멤버 생성에 성공했습니다"),
+    CREATE_MEMBER_SUCCESS(HttpStatus.OK, "멤버 생성에 성공했습니다"),
     CREATE_RESULT_SUCCESS(HttpStatus.CREATED, "결과 생성 성공");
 
 

@@ -3,6 +3,7 @@ package com.sopt.Server.controller;
 import com.sopt.Server.common.ApiResponse;
 import com.sopt.Server.controller.request.MemberPostRequest;
 import com.sopt.Server.controller.response.MemberGetResponse;
+import com.sopt.Server.exception.Success;
 import com.sopt.Server.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,8 +18,6 @@ public class MemberController {
 
     @PostMapping("/member")
     public ApiResponse<MemberGetResponse> saveMember(@RequestBody MemberPostRequest request) {
-
-        ApiResponse<MemberGetResponse> response = memberService.saveMember(request.nickName(), request.age());
-        return response;
+        return ApiResponse.success(Success.CREATE_MEMBER_SUCCESS, memberService.saveMember(request));
     }
 }

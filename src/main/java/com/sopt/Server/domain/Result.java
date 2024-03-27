@@ -8,10 +8,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "RESULTS")
 @Getter
-@Builder
-@EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Result{
 
@@ -19,18 +16,15 @@ public class Result{
     @Column(name = "result_id")
     private Long id;
 
-    @ManyToOne
-    private Member member;
+    private Long memberId;
 
     private int resultAge;
 
-    @CreatedDate
     private LocalDateTime testedDate;
 
     @Builder
-    public Result(Long id, Member member, int resultAge, LocalDateTime testedDate) {
-        this.id = id;
-        this.member = member;
+    private Result(Long memberId, int resultAge, LocalDateTime testedDate) {
+        this.memberId = memberId;
         this.resultAge = resultAge;
         this.testedDate = testedDate;
     }
